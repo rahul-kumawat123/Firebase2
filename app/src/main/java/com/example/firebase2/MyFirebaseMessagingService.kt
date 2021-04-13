@@ -20,6 +20,9 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         const val IMAGE_URL_KEY = "image_url"
     }
 
+
+    //This is a special function that is called when a message is received from the firebase console or
+    // by your app’s backend, in this function you have to create and show the notification.
     override fun onMessageReceived(p0: RemoteMessage) {
         super.onMessageReceived(p0)
 
@@ -29,7 +32,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         }
     }
 
-
+    //Function will be called when firebase creates/update a unique token for a particular user.
+    //This can be updated periodically, reinstall the app, clear data, etc.
     override fun onNewToken(p0: String) {
         super.onNewToken(p0)
 
@@ -44,7 +48,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         intent.putExtra(IMAGE_URL_KEY, data[IMAGE_URL_KEY])
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
 
-        val pendingIntent = PendingIntent.getActivity(this , 0 , intent,PendingIntent.FLAG_UPDATE_CURRENT)
+        val pendingIntent = PendingIntent.getActivity(this , 0 /* Request code */, intent,PendingIntent.FLAG_UPDATE_CURRENT)
 
         val channelId = getString(R.string.default_notification_channel_Id)
 
@@ -62,6 +66,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             val channel = NotificationChannel(channelId,getString(R.string.channel_name),NotificationManager.IMPORTANCE_DEFAULT)
             notificationManager.createNotificationChannel(channel)
         }
+        // to Show notification
         notificationManager.notify( 0,notificationBuilder.build())
     }
 }

@@ -18,6 +18,11 @@ class MainActivity : AppCompatActivity() {
             throw RuntimeException("Test Crash")
         }*/
 
+
+        // Device token is used to send test notifications
+        //getFirebaseFCMDeviceToken()
+
+
         val imageUrl = getDataFromFirebaseCloudMessaging()
         imageUrl?.let { Log.i("image url", it) }
         if (imageUrl != null){
@@ -27,6 +32,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Update the UI/Update the Image as per received URL
+     */
     private fun showOnUI(imageUrl: String) {
         Glide.with(this).load(imageUrl).into(imageView)
     }
@@ -45,6 +53,7 @@ class MainActivity : AppCompatActivity() {
                 Log.e("Token" , "Fetching FCM registration token failed", task.exception)
                 return@OnCompleteListener
             }
+            // Get new FCM registration token
             val token = task.result
             Log.i("Token", token.toString())
         })
