@@ -2,4 +2,5 @@
     <string name="app_name">Firebase 2</string>
     <string name="default_notification_channel_Id">firebase_notification_channel_Id</string>
     <string name="channel_name">App_Channel</string>
+    <string name="you_will_see_the_image_below_when_the_notification_is_clicked">You will see the Image below when the notification is clicked</string>
 </resources>

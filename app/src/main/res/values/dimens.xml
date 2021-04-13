@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="textView_width">239dp</dimen>
+    <dimen name="textview_height">89dp</dimen>
+    <dimen name="imageview_width">246dp</dimen>
+    <dimen name="imageview_height">210dp</dimen>
+</resources>

@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         }*/
 
         val imageUrl = getDataFromFirebaseCloudMessaging()
+        imageUrl?.let { Log.i("image url", it) }
         if (imageUrl != null){
             showOnUI(imageUrl = imageUrl)
         }else{
